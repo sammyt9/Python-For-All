@@ -15,7 +15,7 @@
         </div>
         <div class="home-body">
             {% for l in data %}
-            <div class="data" style="background: url({{l.image}}) center">
+            <div class="data" style="background: url({{l.image}}) no-repeat; background-size: cover">
                 <a class="data-text" href={{l.link}}>{{ l.title }}</a>
             </div>
             {% endfor %}
