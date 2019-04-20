@@ -14,7 +14,7 @@ body {
     margin: 0;
 }
 
-.home-body {
+.home-container {
     flex: 1;
     color: white;
     width: 100%;
@@ -40,4 +40,5 @@ body {
 .home-body {
     flex: 18;
     background: rgb(24, 24, 24);
+    color: white;
 }

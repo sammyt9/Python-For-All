@@ -7,12 +7,17 @@
         <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
     </head>
     <body>
-        <div class="home-body">
+        <div class="home-container">
             <div class="home-header">
                 Gregory Pickett
             </div>
             <div class="home-body">
+                {% for l in data %}
+                    <div>
+                        {{ l.title }}    
+                    </div>
 
+                {% endfor %}
             </div>
         </div>
     </body>
