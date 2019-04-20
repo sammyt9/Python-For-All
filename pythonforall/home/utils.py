@@ -5,8 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 def scrape():
-    # browser = webdriver.Firefox()
-    browser = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
+    browser = webdriver.Chrome('/usr/local/bin/chromedriver')
     browser.get('https://medium.com/search?q=python')
     time.sleep(1)
 
@@ -18,7 +17,7 @@ def scrape():
         elem.send_keys(Keys.PAGE_DOWN)
         time.sleep(0.3)
         num_Pagedowns -= 1
-
+    print(browser)
     page = browser.page_source
     soup = BeautifulSoup(browser.page_source)
     body = soup.find(class_='col u-size9of12 u-sm-size12of12')
@@ -27,8 +26,12 @@ def scrape():
     data_list = []
     for x in articles:
         data = dict()
-        if x.img is not None:
-            data['image'] = x.img['src']
+        images = x.findAll("img")
+        if len(images) >= 2:
+            if images[1]['data-src'] is not None:
+                data['image'] = images[1]['data-src']
+            else:
+                data['image'] = ""
         else:
             data['image'] = ""
 
@@ -43,4 +46,5 @@ def scrape():
             data['link'] = ""
         
         data_list.append(data)
+    browser.quit()
     return data_list
