@@ -24,5 +24,6 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    url(r'^mlpimage.png$', home.views.mplimage),
+    url(r'^mplpie.png$', home.views.mplpie),
+    url(r'^mplbar.png$', home.views.mplbar),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -19,7 +19,7 @@ def scrape():
         elem.send_keys(Keys.PAGE_DOWN)
         time.sleep(0.3)
         num_Pagedowns -= 1
-    print(browser)
+    
     # page = browser.page_source
     soup = BeautifulSoup(browser.page_source, "lxml")
     body = soup.find(class_='col u-size9of12 u-sm-size12of12')
@@ -49,14 +49,102 @@ def scrape():
         
         data_list.append(data)
     browser.quit()
+
+    # driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+    driver = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
+    driver.get('https://hackernoon.com/search?q=learning%20python')
+    time.sleep(1)
+
+    elem = driver.find_element_by_tag_name("body")
+
+    num_Pagedowns = 50
+
+    while num_Pagedowns:
+        elem.send_keys(Keys.PAGE_DOWN)
+        time.sleep(0.3)
+        num_Pagedowns -= 1
+    
+    # page = browser.page_source
+    soup = BeautifulSoup(driver.page_source, "lxml")
+    # body = soup.find(class_='col u-size9of12 u-sm-size12of12')
+
+    articles = soup.findAll("div", {"class": "postArticle-content"})
+    data_list = []
+    for x in articles:
+        data = dict()
+        images = x.findAll("img")
+        if len(images) >= 2:
+            if images[1]['data-src'] is not None:
+                data['image'] = images[1]['data-src']
+            else:
+                data['image'] = ""
+        else:
+            data['image'] = ""
+
+        if x.h3 is not None:
+            data['title'] = x.h3.string.replace("\xa0", " ")
+        else: 
+            data['title'] = ""
+        
+        if x.a is not None:
+            data['link'] = x.a['href']
+        else:
+            data['link'] = ""
+        
+        data_list.append(data)
+    driver.quit()
+
+    # driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+    driver = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
+    driver.get('https://medium.com/search?q=python%20topics')
+    time.sleep(1)
+
+    elem = driver.find_element_by_tag_name("body")
+
+    num_Pagedowns = 25
+
+    while num_Pagedowns:
+        elem.send_keys(Keys.PAGE_DOWN)
+        time.sleep(0.3)
+        num_Pagedowns -= 1
+    
+    # page = browser.page_source
+    soup = BeautifulSoup(driver.page_source, "lxml")
+    # body = soup.find(class_='col u-size9of12 u-sm-size12of12')
+
+    articles = soup.findAll("div", {"class": "postArticle-content"})
+    data_list = []
+    for x in articles:
+        data = dict()
+        images = x.findAll("img")
+        if len(images) >= 2:
+            if images[1]['data-src'] is not None:
+                data['image'] = images[1]['data-src']
+            else:
+                data['image'] = ""
+        else:
+            data['image'] = ""
+
+        if x.h3 is not None:
+            data['title'] = x.h3.string.replace("\xa0", " ")
+        else: 
+            data['title'] = ""
+        
+        if x.a is not None:
+            data['link'] = x.a['href']
+        else:
+            data['link'] = ""
+        
+        data_list.append(data)
+    driver.quit()
     return data_list
 
 def parseData(data):
     # topics: ai/deep learning, data science, learn/tips, web scraping, misc
-    ai_key = ["neural", "train", "classificatin", "automated", "cnn", "machine", "automation", "unsupervised", "prediction", "deep", "artificial"]
-    data_key = ["data", "visualization", "regression", "lambda", "analysis"]
-    tips_key = ["functional", "reasons", "tricks", "libraries", "understanding", "intro", "how", "tip", "know"]
-    web_key = ["web", "scraping"]
+    ai_key = ["neural", "train", "classification", "automated", "cnn", "machine", "automation", "unsupervised", "prediction", "deep", "artificial", "network", "automate", "ai", "extraction"]
+    data_key = ["data", "visualization", "regression", "lambda", "analysis", "probability", "modeling", "decision"]
+    tips_key = ["functional", "reasons", "tricks", "libraries", "understanding", "intro", "how", "tip", "know", "beginners", "tips", "introduction", "guide"]
+    web_key = ["web", "scraping", "websites"]
 
     data_results = OrderedDict()
     data_results['ai'] = 0
