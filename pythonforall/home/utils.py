@@ -5,7 +5,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 def scrape():
-    browser = webdriver.Chrome('/usr/local/bin/chromedriver')
+    # browser = webdriver.Chrome('/usr/local/bin/chromedriver')
+    browser = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
     browser.get('https://medium.com/search?q=python')
     time.sleep(1)
 
@@ -48,3 +49,10 @@ def scrape():
         data_list.append(data)
     browser.quit()
     return data_list
+
+def parseData(data):
+    # topics: ai/deep learning, data science, learn/tips, web scraping, misc
+    ai_key = ["neural", "train", "classificatin", "automated", "cnn", "machine", "automation", "unsupervised", "prediction", "deep"]
+    data_key = ["data", "visualization", "regression", "lambda", "analysis"]
+    tips_key = ["functional", "reasons", "tricks", "libraries", "understanding", "intro", "how", "tip", "know"]
+    web_key = ["web", "scraping"]
