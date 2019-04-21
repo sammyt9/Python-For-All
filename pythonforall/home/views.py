@@ -1,3 +1,4 @@
+# We Christian Cabauatan and Sammy Tieng have contributed equally to this project.
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader

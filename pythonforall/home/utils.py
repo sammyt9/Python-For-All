@@ -1,3 +1,4 @@
+# We Christian Cabauatan and Sammy Tieng have contributed equally to this project.
 import requests
 import time
 from bs4 import BeautifulSoup
