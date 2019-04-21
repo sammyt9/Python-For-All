@@ -15,7 +15,7 @@
         </div>
         <div class="home-body">
             {% for l in data %}
-            <div class="data" style="background: url({{l.image}}); background-size: cover; image-rendering: -webkit-optimize-contrast;">
+            <div class="data" style="background: url({{l.image}}) center; background-size: cover; image-rendering: -webkit-optimize-contrast;">
                 <a class="data-text" href={{l.link}}>{{ l.title }}</a>
             </div>
             {% endfor %}

@@ -1,4 +1,4 @@
-# We Christian Cabauatan and Sammy Tieng have contributed equally to this project.
+# We, Christian Cabauatan and Sammy Tieng, have contributed equally to this project.
 import requests
 import time
 from bs4 import BeautifulSoup
@@ -7,8 +7,8 @@ from selenium.webdriver.common.keys import Keys
 from collections import OrderedDict
 
 def scrape():
-    # browser = webdriver.Chrome('/usr/local/bin/chromedriver')
-    browser = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
+    browser = webdriver.Chrome('/usr/local/bin/chromedriver')
+    # browser = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
     browser.get('https://medium.com/search?q=python')
     time.sleep(1)
 
@@ -51,8 +51,8 @@ def scrape():
         data_list.append(data)
     browser.quit()
 
-    # driver = webdriver.Chrome('/usr/local/bin/chromedriver')
-    driver = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
+    driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+    # driver = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
     driver.get('https://hackernoon.com/search?q=learning%20python')
     time.sleep(1)
 
@@ -70,7 +70,6 @@ def scrape():
     # body = soup.find(class_='col u-size9of12 u-sm-size12of12')
 
     articles = soup.findAll("div", {"class": "postArticle-content"})
-    data_list = []
     for x in articles:
         data = dict()
         images = x.findAll("img")
@@ -95,8 +94,8 @@ def scrape():
         data_list.append(data)
     driver.quit()
 
-    # driver = webdriver.Chrome('/usr/local/bin/chromedriver')
-    driver = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
+    driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+    # driver = webdriver.Chrome('C:\\Users\\stien\\Downloads\\chromedriver_win32\\chromedriver.exe')
     driver.get('https://medium.com/search?q=python%20topics')
     time.sleep(1)
 
@@ -114,7 +113,6 @@ def scrape():
     # body = soup.find(class_='col u-size9of12 u-sm-size12of12')
 
     articles = soup.findAll("div", {"class": "postArticle-content"})
-    data_list = []
     for x in articles:
         data = dict()
         images = x.findAll("img")

@@ -28,8 +28,8 @@ body {
 }
 
 .home-header {
-  margin: 2vmin;
   flex: 1;
+  margin: 3vmin;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,6 +42,7 @@ body {
 
 .home-body {
   flex: 18;
+  overflow: scroll;
   background: rgb(24, 24, 24);
   color: white;
   display: grid;
@@ -53,7 +54,9 @@ body {
   display: inline-grid;
   align-content: center;
   justify-content: center;
+  padding: 10vmin;
 }
+
 
 .data-text {
   text-align: center;
@@ -62,6 +65,11 @@ body {
   font-size: 3vmin;
   font-weight: bold;
   background: rgba(24, 24, 24, 0.2);
-  padding: 5vmin;
   font-family: 'Rubik', sans-serif;
+  transition: background 0.2s ease, padding 1s ease;
+}
+
+.data-text:hover {
+  background: rgba(24, 24, 24, 1);
+  padding: 10vmin;
 }
